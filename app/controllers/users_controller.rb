@@ -16,8 +16,9 @@ class UsersController < ApplicationController
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect '/users/page'
-      else
-        redirect '/signup'
+      else 
+        @no_user = true 
+        erb :'users/login'
       end
     end
   end
