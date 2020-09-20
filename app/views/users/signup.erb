@@ -1,26 +1,36 @@
 <head>
-    <link rel="stylesheet" href="stylesheets/signup.css">
+  <link rel="stylesheet" href="stylesheets/signup.css">
 </head>
 <body>
 <div class="content-signup">
   <div class="container-signup">
     <h1>Sign Up</h1>
     <div class="container-inputs">
+      <%if @error%>
+      <div class="alert alert-danger" role="alert">
+        Please try again.
+      </div>
+      <%end%>
+       <%if @username_taken%>
+      <div class="alert alert-danger" role="alert">
+        Username taken. Please try another.
+      </div>
+      <%end%>
       <form action="/signup" method="POST">
         <div class="container-input">
           <label for="username">
           Username 
           </label>
-          <input placeholder="username" id="username" type="text" name="username">
+          <input autocomplete="off" placeholder="username" id="username" type="text" name="username">
         </div>
         <div class="container-input">
             <label for="password">
             Password
             </label>
-            <input id="password" type="password" name="password">
+            <input autocomplete="off" id="password" type="password" name="password">
         </div>
             <div class="con-login">
-                <a href="/">
+                <a href="/login">
                 Log In
                 </a>
             </div>

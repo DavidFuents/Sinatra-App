@@ -1,23 +1,28 @@
 <head>
-  <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/login.css">
 </head>
 <body>
 <div class="content-login">
   <div class="container-login">
     <h1>Log In</h1>
     <div class="container-inputs">
+      <%if @error%>
+      <div class="alert alert-danger" role="alert">
+        Please try again.
+      </div>
+      <%end%>
       <form action="/login" method="POST">
         <div class="container-input">
           <label for="username">
           Username 
           </label>
-          <input placeholder="username" id="username" type="text" name="username">
+          <input autocomplete="off" placeholder="username" id="username" type="text" name="username">
         </div>
         <div class="container-input">
           <label for="password">
           Password
           </label>
-          <input id="password" type="password" name="password">
+          <input autocomplete="off" id="password" type="password" name="password">
         </div>
          <div class="con-signup">
           <a href="/signup">

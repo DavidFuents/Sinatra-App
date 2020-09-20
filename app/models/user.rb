@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
     has_many :friends
     has_many :posts
     has_many :servers
-    has_many :channels, through :servers
+    # has_many :channels, through :servers
 end

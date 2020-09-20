@@ -11,10 +11,9 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     if logged_in?
-      erb :'users/show'
+      erb :'users/page'
     else
-      erb :'index/index'
-    
+      erb :'/index'
     end
   end
 
