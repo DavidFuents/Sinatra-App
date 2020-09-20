@@ -13,7 +13,10 @@ class UsersController < ApplicationController
       erb :'users/login'
     else 
       user = User.find_by(:username => params[:username]) 
-      if user && user.authenticate(params[:password])
+      if user && !user.authenticate(params[:password])
+        @wrong_password = true 
+        erb :'users/login'
+      elsif user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect '/users/page'
       else 
@@ -56,6 +59,11 @@ class UsersController < ApplicationController
   end
 
   get '/users/page' do 
-    erb :'users/page'
+    if logged_in?
+      @user = current_user[:username]
+      erb :'users/page'
+    else 
+      redirect '/'
+    end
   end
 end

@@ -16,6 +16,11 @@
         No user found. Please sign up.
       </div>
       <%end%>
+      <%if @wrong_password%>
+      <div class="alert alert-danger" role="alert">
+        Wrong password. Please try again.
+      </div>
+      <%end%>
       <form action="/login" method="POST">
         <div class="container-input">
           <label for="username">
