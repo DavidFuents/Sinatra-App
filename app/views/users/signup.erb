@@ -2,48 +2,35 @@
   <link rel="stylesheet" href="stylesheets/signup.css">
 </head>
 <body>
-<div class="content-signup">
-  <div class="container-signup">
-    <h1>Sign Up</h1>
-    <div class="container-inputs">
-      <%if @error%>
-      <div class="alert alert-danger" role="alert">
-        Please try again.
+  <div class="container-xl mt-5 pt-5">
+    <a class="nav-link text-left text-dark" href="/">Home</a> 
+    <div class="row justify-content-center m-5 p-5">
+      <div class="col-md-4">
+        <h1 class="text-center">Sign Up</h1>
+        <%if @error%>
+          <div class="alert alert-danger" role="alert">
+            Please try again.
+          </div>
+        <%end%>
+        <%if @username_taken%>
+          <div class="alert alert-danger" role="alert">
+            Username taken. Please try another.
+          </div>
+        <%end%>
+        <form action="/signup" method="POST" >
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="email" class="form-control" autocomplete="off" id="username" placeholder="Username" name="username">
+            <small id="emailHelp" class="form-text text-muted">case sensitive</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" autocomplete="off" id="password" placeholder="Password" name="password">
+            <a class="nav-link text-right text-dark" href="/login">Log In</a> 
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
       </div>
-      <%end%>
-       <%if @username_taken%>
-      <div class="alert alert-danger" role="alert">
-        Username taken. Please try another.
-      </div>
-      <%end%>
-      <form action="/signup" method="POST">
-        <div class="container-input">
-          <label for="username">
-          Username 
-          </label>
-          <input autocomplete="off" placeholder="Username" id="username" type="text" name="username">
-        </div>
-        <div class="container-input">
-            <label for="password">
-            Password
-            </label>
-            <input autocomplete="off" placeholder="Password" id="password" type="password" name="password">
-        </div>
-            <div class="con-login">
-              <a href="/login">
-              Log In
-              </a>
-              <a>|</a>
-              <a href="/">
-              Home
-              </a>
-            </div>
-        </div>
-        <footer>
-            <button class="btn btn-primary" type="submit">
-            Sign Up
-            </button>
-        </footer>
-    </form>
+    </div>
   </div>
-</div>
+</body>

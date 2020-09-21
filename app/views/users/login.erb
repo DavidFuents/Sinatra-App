@@ -2,54 +2,40 @@
   <link rel="stylesheet" href="stylesheets/login.css">
 </head>
 <body>
-<div class="content-login">
-  <div class="container-login">
-    <h1>Log In</h1>
-    <div class="container-inputs">
-      <%if @error%>
-      <div class="alert alert-danger" role="alert">
-        Wrong username or password.<br>Please try again.
+  <div class="container-xl mt-5 pt-5">
+    <a class="nav-link text-left text-dark" href="/">Home</a> 
+    <div class="row justify-content-center m-5 p-5">
+      <div class="col-md-4">
+        <h1 class="text-center">Log In</h1>
+        <%if @error%>
+          <div class="alert alert-danger" role="alert">
+            Wrong username or password.<br>Please try again.
+          </div>
+        <%end%>
+        <%if @no_user%>
+          <div class="alert alert-danger" role="alert">
+            No user found. Please sign up.
+          </div>
+        <%end%>
+        <%if @wrong_password%>
+          <div class="alert alert-danger" role="alert">
+            Wrong password. Please try again.
+          </div>
+        <%end%>
+        <form action="/login" method="POST" >
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="email" class="form-control" autocomplete="off" id="username" placeholder="Username" name="username">
+            <small id="emailHelp" class="form-text text-muted">case sensitive</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" autocomplete="off" id="password" placeholder="Password" name="password">
+            <a class="nav-link text-right text-dark" href="/signup">Sign Up</a> 
+          </div>
+          <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
       </div>
-      <%end%>
-      <%if @no_user%>
-      <div class="alert alert-danger" role="alert">
-        No user found. Please sign up.
-      </div>
-      <%end%>
-      <%if @wrong_password%>
-      <div class="alert alert-danger" role="alert">
-        Wrong password. Please try again.
-      </div>
-      <%end%>
-      <form action="/login" method="POST">
-        <div class="container-input">
-          <label for="username">
-          Username 
-          </label>
-          <input autocomplete="off" placeholder="Username" id="username" type="text" name="username">
-        </div>
-        <div class="container-input">
-          <label for="password">
-          Password
-          </label>
-          <input autocomplete="off" placeholder="Password" id="password" type="password" name="password">
-        </div>
-         <div class="con-signup">
-          <a href="/signup">
-          Sign Up
-          </a> 
-          <a>|</a>
-          <a href="/">
-          Home
-          </a>
-        </div>
     </div>
-    <footer>
-    <button class="btn btn-primary" type="submit">
-    Log In
-    </button>
-  </footer>
-   </form>
   </div>
-</div>
 </body>
