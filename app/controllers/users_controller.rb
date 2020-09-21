@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   get '/login' do 
     if logged_in?
+      @user = current_user[:username]
       erb :'users/page'
     else
       erb :'users/login'

@@ -4,7 +4,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <a class="navbar-brand" href="/">
-    <img src="images/mic.ico" width="30" height="30">SinatraChat
+    <img src="images/calendar.ico" width="30" height="30">SinatraCalendar
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,12 +12,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a href="/signup" class="nav-link">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login"><button class="btn btn-outline-primary" type="submit">Log In</button></a>
-      </li>
+      <%if logged_in?%>
+        <li class="nav-item">
+          <a href="/users/page" class="nav-link">Home</a>
+        </li>
+      <%else%>
+        <li class="nav-item">
+          <a href="/signup" class="nav-link">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login"><button class="btn btn-outline-primary" type="submit">Log In</button></a>
+        </li>
+      <%end%>
     </ul>
   </div>
 </nav>
