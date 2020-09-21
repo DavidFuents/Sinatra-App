@@ -1,4 +1,54 @@
+<head>
+    <link rel="stylesheet" href="stylesheets/page.css">
+</head>
 <body> 
-<p>successful login for <%=@user%>.</p>   
-<a href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <a class="mx-auto" href="#">
+                <img src="images/music.ico" rel="icon">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+            <ul class="navbar-nav mr-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/friends">Friends</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav flex-row ml-auto flex-nowrap">
+            <li class="nav-item">
+                <a href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-xl justify-content-center mt-5 pt-5">
+        <p>successful login for <%=@user%>.</p>   
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
 </body>

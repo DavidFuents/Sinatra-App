@@ -6,5 +6,4 @@ end
 
 use UsersController
 run ApplicationController
-use ServersController
 
