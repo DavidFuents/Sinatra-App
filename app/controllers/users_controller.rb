@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   get '/login' do 
     if logged_in?
-      @user = current_user[:username]
-      erb :'users/index'
+      redirect 'users/index'
     else
       erb :'users/login'
     end
@@ -13,12 +12,13 @@ class UsersController < ApplicationController
       @error = true
       erb :'users/login'
     else 
-      user = User.find_by(:username => params[:username]) 
+      user = User.find_by(:username => params[:username])
+
       if user && !user.authenticate(params[:password])
         @wrong_password = true 
         erb :'users/login'
       elsif user && user.authenticate(params[:password])
-        session[:user_id] = user.id
+        session[:user_id] = current_user.id
         redirect '/users/index'
       else 
         @no_user = true 
@@ -41,13 +41,14 @@ class UsersController < ApplicationController
       erb :'users/signup'
     else 
       user = User.find_by(:username => params[:username])
+      
       if user 
         @username_taken = true
         erb :'users/signup' 
       else 
         @user = User.new(params)
         @user.save
-        session[:user_id] = @user.id
+        session[:user_id] = current_user.id
 
         redirect 'users/index'        
       end

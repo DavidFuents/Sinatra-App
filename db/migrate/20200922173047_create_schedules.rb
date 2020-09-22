@@ -4,7 +4,6 @@ class CreateSchedules < ActiveRecord::Migration
       t.string :title
       t.string :heading
       t.string :row
-      t.string :date 
       t.string :user_id
 
       t.timestamps null: false

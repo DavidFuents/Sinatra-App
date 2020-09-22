@@ -1,1 +1,33 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/users/index">Home</a>        
+            </div>
+            <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
+        </div>
+    </nav>
+   
+   <div class="container-xl justify-content-center mt-2 pt-2">
+        <div class="row justify-content-center m-5 p-5">
+            <div class="col-md-4">  
+                <h1 class="text-center">Create a table</h1>
+                <form class="mt-4" action="/schedules" method="POST" >
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" autocomplete="off" id="title" placeholder="Title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="headings">Headings</label>
+                        <input type="text" class="form-control" autocomplete="off" placeholder="Heading1, Heading2" id="headings" name="heading[]">
+                        <small id="emailHelp" class="form-text text-muted">Add a comma after every heading</small>
+                    </div>
+                   <button type="submit" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

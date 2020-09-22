@@ -1,5 +1,6 @@
-class SchedulesController < ApplicationController
+require 'pry'
 
+class SchedulesController < ApplicationController
   # GET: /schedules
   # get "/schedules" do
   #   erb :"/schedules/index"
@@ -11,18 +12,20 @@ class SchedulesController < ApplicationController
   end
 
   # # POST: /schedules
-  # post "/schedules" do
-  #   redirect "/schedules"
-  # end
+  post "/schedules" do
+    @table = Schedule.new(params)
+    @table[:user_id] = current_user.id
+    @table.save
+    binding.pry
+    redirect "/schedules/#{@table.id}/edit"
+  end
 
-  # GET: /schedules/5
   get "/schedules/:id" do
     erb :"/schedules/show"
   end
 
-  # GET: /schedules/5/edit
   get "/schedules/:id/edit" do
-    erb :"/schedules/edit"
+    erb :'/schedules/edit'
   end
 
   # PATCH: /schedules/5

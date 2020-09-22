@@ -1,37 +1,18 @@
-<head>
-    <link rel="stylesheet" href="stylesheets/page.css">
-</head>
 <body> 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
-            <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/users/index">Home</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mx-auto my-2 order-0 order-md-1 position-relative">
-            <a class="mx-auto" href="/">
-                <img rel="icon" src="images/calendar.ico" height="30" width="30">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="dual-collapse2">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
-            <ul class="navbar-nav mr-auto text-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="/friends">Schedules</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav flex-row ml-auto flex-nowrap">
-                <li class="nav-item">
-                    <a href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
-                </li>
-            </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="/users/index">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                
+            </div>
+            <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
         </div>
     </nav>
-    
+   
     <div class="container-xl justify-content-center mt-2 pt-2">
         <div class="row justify-content-center m-5 p-5">
             <div class="col-md-12">
