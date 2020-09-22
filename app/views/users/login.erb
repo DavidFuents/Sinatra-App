@@ -9,7 +9,7 @@
         <h1 class="text-center">Log In</h1>
         <%if @error%>
           <div class="alert alert-danger" role="alert">
-            Wrong username or password.<br>Please try again.
+            Wrong username.
           </div>
         <%end%>
         <%if @no_user%>
@@ -19,7 +19,7 @@
         <%end%>
         <%if @wrong_password%>
           <div class="alert alert-danger" role="alert">
-            Wrong password. Please try again.
+            Wrong password.
           </div>
         <%end%>
         <form action="/login" method="POST" >

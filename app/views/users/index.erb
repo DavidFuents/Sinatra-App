@@ -6,7 +6,7 @@
         <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
             <ul class="navbar-nav ml-auto text-center">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/users/show">Home</a>
+                    <a class="nav-link" href="/users/index">Home</a>
                 </li>
             </ul>
         </div>
@@ -14,40 +14,73 @@
             <a class="mx-auto" href="/">
                 <img rel="icon" src="images/calendar.ico" height="30" width="30">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="dual-collapse2">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
         <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
             <ul class="navbar-nav mr-auto text-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="/friends">Friends</a>
+                    <a class="nav-link" href="/friends">Schedules</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav flex-row ml-auto flex-nowrap">
-            <li class="nav-item">
-                <a href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
-            </li>
+                <li class="nav-item">
+                    <a href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
+                </li>
             </ul>
         </div>
     </nav>
-
-    <div class="container-xl justify-content-center mt-5 pt-5">
-        <p>successful login for <%=@user%>!</p>   
-        
-        <div class="row">
-            <div class="col-md-8">
+    
+    <div class="container-xl justify-content-center mt-2 pt-2">
+        <div class="row justify-content-center m-5 p-5">
+            <div class="col-md-12">
+               <p>successful login for <%=@user%>!</p>   
                 <div class="row">
-                    <div class="col-md-6">
-
+                    <div class="col-md-10">
+                        <%#if @tables.empty?%>
+                            <h1>You have no planners make one now!</h1>
+                            <%# add a new schedule button %>
+                        <%#else%>
+                            <%#@table.each do |table| %>
+                                <table class="table mb-5 pb-5">
+                                    <h2>Title</h2>
+                                    <thead class="thead-light">
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        <%#end%>
+                    <%#end%>
                     </div>
-                    <div class="col-md-6">
-
+                    <div class="col-md-2 justify-content-center">
+                        <h4>Planners</h4>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-
             </div>
         </div>
     </div>

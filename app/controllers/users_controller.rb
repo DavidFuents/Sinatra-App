@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   get '/signup' do 
     if logged_in?
-      erb :'user/index'
+      erb :'users/index'
     else
       erb :'users/signup'
     end

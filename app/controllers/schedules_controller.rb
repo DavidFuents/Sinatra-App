@@ -2,12 +2,12 @@ class SchedulesController < ApplicationController
 
   # GET: /schedules
   get "/schedules" do
-    erb :"/schedules/index.html"
+    erb :"/schedules/index"
   end
 
   # GET: /schedules/new
   get "/schedules/new" do
-    erb :"/schedules/new.html"
+    erb :"/schedules/new"
   end
 
   # POST: /schedules
@@ -17,12 +17,12 @@ class SchedulesController < ApplicationController
 
   # GET: /schedules/5
   get "/schedules/:id" do
-    erb :"/schedules/show.html"
+    erb :"/schedules/show"
   end
 
   # GET: /schedules/5/edit
   get "/schedules/:id/edit" do
-    erb :"/schedules/edit.html"
+    erb :"/schedules/edit"
   end
 
   # PATCH: /schedules/5
