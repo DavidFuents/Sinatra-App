@@ -1,19 +1,19 @@
 class SchedulesController < ApplicationController
 
   # GET: /schedules
-  get "/schedules" do
-    erb :"/schedules/index"
-  end
+  # get "/schedules" do
+  #   erb :"/schedules/index"
+  # end
 
   # GET: /schedules/new
   get "/schedules/new" do
     erb :"/schedules/new"
   end
 
-  # POST: /schedules
-  post "/schedules" do
-    redirect "/schedules"
-  end
+  # # POST: /schedules
+  # post "/schedules" do
+  #   redirect "/schedules"
+  # end
 
   # GET: /schedules/5
   get "/schedules/:id" do
