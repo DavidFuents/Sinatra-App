@@ -23,39 +23,47 @@
                             <h1>You have no planners make one now!</h1>
                             <a href="/schedules/new"><button type="submit" class="btn btn-success">New Planner</button></a>
                         <%else%>
-                            <table class="table mb-5 pb-5">
                             <%@tables.each do |t| %>
-                                <h2 id="#<%=t.title.capitalize%>"><%=t.title.capitalize%></h2>
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <%t.heading.each do |heading|%>
-                                            <th scope="col"><%=heading.strip%></th>
+                                <table class="table mb-5 pb-5">
+                                    <h2 id="#<%=t.title.capitalize%>"><%=t.title.capitalize%></h2>
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <%t.heading.each do |heading|%>
+                                                <th scope="col"><%=heading.strip.capitalize%></th>
+                                            <%end%>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%if t.row == nil%>
+                                            <%nil%>
+                                        <%else%>
+                                            <%t.row.each_with_index do |row_items, index|%>
+                                                <tr>
+                                                    <th scope="row"><%=index%></th>
+                                                    <%row_items.each do |item|%>
+                                                        <td><%=item%></td>
+                                                    <%end%>
+                                                </tr>
+                                            <%end%>
                                         <%end%>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            <%end%>
                         <%end%>
-                    <%end%>
                     </div>
                     <div class="col-md-2 justify-content-center">
                         <h4>Planners</h4>
                         <%if @tables.empty?%>
                             <p>None</p>
                         <%else%>
-                        <ul class="nav flex-column">
-                            <li class="nav-item text-dark">
-                                <%@tables.each do |t|%>
-                                    <a class="nav-link active" href="#<%=t.title.capitalize%>"><%=t.title.capitalize%></a>
-                                <%end%>
-                            </li>
-                        </ul>
+                            <ul class="nav flex-column">
+                                <li class="nav-item text-dark">
+                                    <%@tables.each do |t|%>
+                                        <a class="nav-link active" href="#<%=t.title.capitalize%>"><%=t.title.capitalize%></a>
+                                    <%end%>
+                                </li>
+                            </ul>
                         <%end%>
                     </div>
                 </div>

@@ -25,9 +25,5 @@ class ApplicationController < Sinatra::Base
     def logout 
       session.clear
     end
-
-    def text_to_array(params)
-      params.chars.join.split(",")
-    end
   end
 end

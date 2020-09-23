@@ -63,8 +63,8 @@ class UsersController < ApplicationController
   get '/users/index' do 
     if logged_in?
       @user = current_user[:id]
-      @tables = Schedule.all 
-      
+      @tables = current_user.schedules
+     
       erb :'users/index'
     else 
       redirect '/'
