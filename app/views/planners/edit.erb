@@ -5,7 +5,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="/users/index">Home</a>        
+                <a class="nav-link" href="/planners/index">Home</a>        
             </div>
             <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
         </div>
@@ -15,9 +15,9 @@
         <div class="row justify-content-center m-5 p-5">
             <div class="col-md-10">  
                 <h1 class="text-center">Editing <%=@table.title.capitalize%></h1>
-                <%if Schedule.all.empty?%>
+                <%if Planner.all.empty?%>
                     <h1>You have no planners make one now!</h1>
-                    <a href="/schedules/new"><button type="submit" class="btn btn-success">New Planner</button></a>
+                    <a href="/planners/new"><button type="submit" class="btn btn-success">New Planner</button></a>
                 <%else%>
                     <table class="table my-5 py-5">
                         <thead class="thead-light">
@@ -44,7 +44,7 @@
                         </tbody>
                     </table>
                 <%end%>
-                <form action="/schedules/<%=@table.id%>" method="POST">
+                <form action="/planners/<%=@table.id%>" method="POST">
                     <div class="row">
                         <%@table.heading.each do |heading|%>
                             <div class="col">

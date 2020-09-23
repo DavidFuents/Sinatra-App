@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200922173047) do
+ActiveRecord::Schema.define(version: 20200923165112) do
 
-  create_table "schedules", force: :cascade do |t|
+  create_table "planners", force: :cascade do |t|
     t.string   "title"
     t.string   "heading"
     t.string   "row"

@@ -5,8 +5,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" href="/users/index">Home</a>
-                <a class="nav-link" href="/schedules/new">New planner</a>
+                <a class="nav-link active" href="/planners/index">Home</a>
+                <a class="nav-link" href="/planners/new">New planner</a>
                 
             </div>
             <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
@@ -21,7 +21,7 @@
                     <div class="col-md-10">
                         <%if @tables.empty?%>
                             <h1>You have no planners make one now!</h1>
-                            <a href="/schedules/new"><button type="submit" class="btn btn-success">New Planner</button></a>
+                            <a href="/planners/new"><button type="submit" class="btn btn-success">New Planner</button></a>
                         <%else%>
                             <%@tables.each do |t| %>
                                 <table class="table mb-5 pb-5">

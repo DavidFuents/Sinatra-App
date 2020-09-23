@@ -1,6 +1,6 @@
-class CreateSchedules < ActiveRecord::Migration
+class CreatePlanners < ActiveRecord::Migration
   def change
-    create_table :schedules do |t|
+    create_table :planners do |t|
       t.string :title
       t.string :heading
       t.string :row

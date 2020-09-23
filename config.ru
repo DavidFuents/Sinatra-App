@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use UsersController
+use PlannersController
 run ApplicationController
-use SchedulesController
+
 
