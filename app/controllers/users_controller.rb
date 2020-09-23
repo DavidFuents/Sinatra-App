@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       erb :'users/signup'
     else 
       user = User.find_by(:username => params[:username])
-      
+
       if user 
         @username_taken = true
         erb :'users/signup' 
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     if logged_in?
       @user = current_user[:id]
       @tables = Schedule.all 
-
+      
       erb :'users/index'
     else 
       redirect '/'

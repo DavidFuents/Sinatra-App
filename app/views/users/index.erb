@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" href="/users/index">Home</a>
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="/schedules/new">New planner</a>
                 
             </div>
             <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
@@ -14,7 +14,7 @@
     </nav>
    
     <div class="container-xl justify-content-center mt-2 pt-2">
-        <div class="row justify-content-center m-5 p-5">
+        <div class="row justify-content-center m-4 p-4">
             <div class="col-md-12">
                <%# <p>successful login for !</p>    %>
                 <div class="row">
@@ -24,39 +24,25 @@
                             <a href="/schedules/new"><button type="submit" class="btn btn-success">New Planner</button></a>
                         <%else%>
                             <table class="table mb-5 pb-5">
-                            <%#@tables.each do |t| %>
-                                <h2 id="id">id</h2>
+                            <%@tables.each do |t| %>
+                                <h2 id="#<%=t.title.capitalize%>"><%=t.title.capitalize%></h2>
                                 <thead class="thead-light">
                                     <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                        <th scope="col">#</th>
+                                        <%t.heading.each do |heading|%>
+                                            <th scope="col"><%=heading.strip%></th>
+                                        <%end%>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
                                     </tr>
                                 </tbody>
                             </table>
                         <%end%>
-                    <%#end%>
+                    <%end%>
                     </div>
                     <div class="col-md-2 justify-content-center">
                         <h4>Planners</h4>
@@ -66,7 +52,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item text-dark">
                                 <%@tables.each do |t|%>
-                                    <a class="nav-link active" href="#<%=t.title%>"><%=t.title%></a>
+                                    <a class="nav-link active" href="#<%=t.title.capitalize%>"><%=t.title.capitalize%></a>
                                 <%end%>
                             </li>
                         </ul>
