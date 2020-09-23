@@ -5,7 +5,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="/planners/index">Home</a>        
+                <a class="nav-link" href="/planners">Home</a>   
+                <a class="nav-link active" href="/planners/new">New planner</a>       
             </div>
             <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
         </div>
@@ -15,7 +16,7 @@
         <div class="row justify-content-center m-5 p-5">
             <div class="col-md-4">  
                 <h1 class="text-center">Create a table</h1>
-                <form class="mt-4" action="/planners" method="POST" >
+                <form class="mt-4" action="/planners/new" method="POST" >
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" autocomplete="off" id="title" placeholder="Title" name="title">

@@ -5,7 +5,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="/planners/index">Home</a>        
+                <a class="nav-link" href="/planners">Home</a>      
             </div>
             <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
         </div>
@@ -14,7 +14,7 @@
    <div class="container-xl justify-content-center mt-2 pt-2">
         <div class="row justify-content-center m-5 p-5">
             <div class="col-md-10">  
-                <h1 class="text-center">Editing <%=@table.title.capitalize%></h1>
+                <h1 class="text-center">Editing <%=@table.title.capitalize%> Planner</h1>
                 <%if Planner.all.empty?%>
                     <h1>You have no planners make one now!</h1>
                     <a href="/planners/new"><button type="submit" class="btn btn-success">New Planner</button></a>
@@ -29,6 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <%#binding.pry%>
                             <%if @table.row.empty?%>
                                 <%nil%>
                             <%else%>
@@ -36,7 +37,7 @@
                                     <tr>
                                         <th scope="row"><%=index%></th>
                                         <%row_items.each do |item|%>
-                                            <td><%=item%></td>
+                                            <td><%=item.capitalize%></td>
                                         <%end%>
                                     </tr>
                                 <%end%>
@@ -44,17 +45,38 @@
                         </tbody>
                     </table>
                 <%end%>
-                <form action="/planners/<%=@table.id%>" method="POST">
-                    <div class="row">
-                        <%@table.heading.each do |heading|%>
-                            <div class="col">
-                                <input type="hidden" id="hidden" name="_method" value="patch">
-                                <input type="text" class="form-control" autocomplete="off" placeholder="<%=heading.capitalize%>" name="row[][]">
+                <div class="row">
+                    <div class="col-md-12 mb-2 pb-2">
+                        <form action="/planners/<%=@table.id%>/edit" method="POST">
+                            <div class="row">
+                                <%@table.heading.each do |heading|%>
+                                    <div class="col">
+                                        <input type="text" class="form-control" autocomplete="off" placeholder="<%=heading.strip.capitalize%>" name="planner[row][]">
+                                    </div>
+                                <%end%>
+                                <button type="submit" class="btn btn-success">Add row</button>
                             </div>
-                        <%end%>
-                        <button type="submit" class="btn btn-success">Add row</button>
+                        </form>
                     </div>
-                </form>
+                </div>
+               <div class="row">
+                    <div class="col-md-12 mb-2 pb-2">
+                        <form action="/planners/<%=@table.id%>/edit" method="POST">
+                            <input type="hidden" id="hidden" name="_method" value="patch"> 
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" autocomplete="off" placeholder="#" name="row_id">
+                                </div>
+                                <%@table.heading.each do |heading|%>     
+                                    <div class="col">                  
+                                        <input type="text" class="form-control" autocomplete="off" placeholder="<%=heading.strip.capitalize%>" name="planner[row][]">
+                                    </div>
+                                <%end%>    
+                                <button type="submit" class="btn btn-primary">Edit row</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

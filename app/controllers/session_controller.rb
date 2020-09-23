@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
     get '/signup' do 
         if logged_in?
-            erb :'/planners'
+            redirect :'/planners'
         else
             erb :'sessions/signup'
         end

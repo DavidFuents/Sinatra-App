@@ -14,7 +14,7 @@ class PlannersController < ApplicationController
     erb :'/planners/new'
   end
 
-  post '/planners' do
+  post '/planners/new' do
     @table = Planner.new(params)
     @table[:user_id] = current_user[:id]
     @table[:heading] = @table[:heading][0].split(",")
@@ -31,19 +31,40 @@ class PlannersController < ApplicationController
   end
 
   get '/planners/:id/edit' do
-    # if their table isnt theirs show error
     @table = Planner.find(params[:id])
     
     erb :'/planners/edit'
   end
 
+  post '/planners/:id/edit' do 
+    @table = Planner.find(params[:id])
+
+    if params[:planner].include?(:row)
+      @row = []
+
+      params[:planner][:row].each do |item|
+        @row << item.strip
+      end
+
+      params[:planner][:row].clear
+
+      @table[:row].each do |row|
+        params[:planner][:row] << row
+      end
+      
+      params[:planner][:row] << @row
+      @table.update(params[:planner])
+    end
+
+    redirect "planners/#{@table.id}/edit"
+  end
+
   patch "/planners/:id/edit" do
     binding.pry
-    # @table = Planner.find(params[:id])
-    # if !params[:heading].empty?
-      @table.update(params)
-    # end
-    erb :"/planners/#{@table.id}/edit"
+    @table = Planner.find(params[:id])
+    @table.update(params[:planner])
+
+    redirect :"/planners/#{@table.id}/edit"
   end
 
   delete "/planners/:id/delete" do
