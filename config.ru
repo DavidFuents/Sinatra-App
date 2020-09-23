@@ -5,7 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use UsersController
-use PlannersController
+use SessionController
 run ApplicationController
+use PlannersController
 
 

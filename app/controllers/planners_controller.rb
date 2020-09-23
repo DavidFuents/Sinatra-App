@@ -1,5 +1,5 @@
 class PlannersController < ApplicationController
-  get 'planners/index' do
+  get '/planners' do
     if logged_in?
       @user = current_user[:id]
       @tables = current_user.planners
