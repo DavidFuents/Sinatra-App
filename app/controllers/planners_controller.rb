@@ -75,9 +75,33 @@ class PlannersController < ApplicationController
   end
 
   patch "/planners/:id/edit" do
-    binding.pry
     @table = Planner.find(params[:id])
-    @table.update(params[:planner])
+
+    @row = []
+    @item_index = []
+
+    params[:planner][:row].each do |item|
+      if item == ""
+        nil
+      else
+        @row << item.strip
+        @item_index << params[:planner][:row].index(item)
+      end 
+    end
+    
+    params[:planner][:row].clear
+    @edit_row = @table[:row][params[:planner][:row_id].to_i - 1]
+
+    @row.each_with_index do |item, index|
+      @edit_row[@item_index[index]] = item 
+    end
+
+    @table[:row].each do |row|
+      params[:planner][:row] << row
+    end
+
+    @table.update(params[:planner].except(:row_id))
+    
 
     redirect :"/planners/#{@table.id}/edit"
   end
