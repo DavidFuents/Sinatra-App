@@ -34,9 +34,9 @@
                             <%else%>
                                 <%@table.row.each_with_index do |row_items, index|%>
                                     <tr>
-                                        <th scope="row"><%=index%></th>
+                                        <th scope="row"><%=index + 1%></th>
                                         <%row_items.each do |item|%>
-                                            <td><%=item.capitalize%></td>
+                                            <td><%=item.strip.capitalize%></td>
                                         <%end%>
                                     </tr>
                                 <%end%>

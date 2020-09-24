@@ -18,8 +18,8 @@ class SessionController < ApplicationController
                 @username_taken = true
                 erb :'sessions/signup' 
             else 
-                @user = User.create(params)
-                session[:user_id] = @user[:id]
+                user = User.create(params)
+                session[:user_id] = user[:id]
 
                 redirect '/planners'        
             end

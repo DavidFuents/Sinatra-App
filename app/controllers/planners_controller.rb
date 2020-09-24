@@ -1,7 +1,6 @@
 class PlannersController < ApplicationController
   get '/planners' do
     if logged_in?
-      @user = current_user[:id]
       @tables = current_user.planners
      
       erb :'planners/index'
@@ -11,7 +10,11 @@ class PlannersController < ApplicationController
   end
 
   get '/planners/new' do
-    erb :'/planners/new'
+    if logged_in?
+      erb :'/planners/new'
+    else  
+      redirect '/'
+    end
   end
 
   post '/planners/new' do
@@ -25,19 +28,27 @@ class PlannersController < ApplicationController
   end
 
   get '/planners/:id' do
-    @table = Planner.find(params[:id])
+    if logged_in?
+      @table = Planner.find(params[:id])
     
-    if @table[:user_id] == current_user[:id]
-      erb :'/planners/show'
-    else  
-      redirect :'/users/error'
+      if @table[:user_id] == current_user[:id]
+        redirect :'/users/error'
+      else  
+        erb :'/planners/show'
+      end
+    else 
+      redirect '/'
     end
   end
 
   get '/planners/:id/edit' do
-    @table = Planner.find(params[:id])
-    
-    erb :'/planners/edit'
+    if logged_in?
+      @table = Planner.find(params[:id])
+      
+      erb :'/planners/edit'
+    else 
+      redirect '/'
+    end
   end
 
   post '/planners/:id/edit' do 
@@ -72,9 +83,13 @@ class PlannersController < ApplicationController
   end
 
   delete "/planners/:id/delete" do
-    @table = Planner.find(params[:id])
-    @table.destroy
+    if logged_in?
+      @table = Planner.find(params[:id])
+      @table.destroy
 
-    redirect "/planners/index"
+      redirect '/planners'
+    else  
+      redirect '/'
+    end
   end
 end
