@@ -25,9 +25,13 @@ class PlannersController < ApplicationController
   end
 
   get '/planners/:id' do
-    # check if table belongs to user
-    # @table = Planner.find(params[:id])
-    erb :'/planners/show'
+    @table = Planner.find(params[:id])
+    
+    if @table[:user_id] == current_user[:id]
+      erb :'/planners/show'
+    else  
+      redirect :'/users/error'
+    end
   end
 
   get '/planners/:id/edit' do
@@ -51,7 +55,7 @@ class PlannersController < ApplicationController
       @table[:row].each do |row|
         params[:planner][:row] << row
       end
-      
+
       params[:planner][:row] << @row
       @table.update(params[:planner])
     end

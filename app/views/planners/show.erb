@@ -1,1 +1,55 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="/planners">Home</a>
+                <a class="nav-link" href="/planners/new">New planner</a>  
+            </div>
+            <a class="nav-item ml-auto" href="/logout"><button type="submit" class="btn btn-danger">Log out</button></a>
+        </div>
+    </nav>
+   
+    <div class="container-xl justify-content-center mt-2 pt-2">
+        <div class="row justify-content-center m-4 p-4">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <%if @table == nil%>
+                            <h1>You have no planners make one now!</h1>
+                            <a href="/planners/new"><button type="submit" class="btn btn-success">New Planner</button></a>
+                        <%else%>
+                            <table class="table mb-5 pb-5">
+                              <h1 class="text-center mb-3 pb-3" id="<%=@table.title.capitalize%>"><%=@table.title.capitalize%></h1>
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <%@table.heading.each do |heading|%>
+                                            <th scope="col"><%=heading.strip.capitalize%></th>
+                                        <%end%>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%if @table.row == nil%>
+                                        <%nil%>
+                                    <%else%>
+                                        <%@table.row.each_with_index do |row_items, index|%>
+                                            <tr>
+                                                <th scope="row"><%=index%></th>
+                                                <%row_items.each do |item|%>
+                                                    <td><%=item%></td>
+                                                <%end%>
+                                            </tr>
+                                        <%end%>
+                                    <%end%>
+                                </tbody>
+                            </table>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -15,7 +15,6 @@
     <div class="container-xl justify-content-center mt-2 pt-2">
         <div class="row justify-content-center m-4 p-4">
             <div class="col-md-12">
-               <%# <p>successful login for !</p>    %>
                 <div class="row">
                     <div class="col-md-10">
                         <%if @tables.empty?%>
@@ -24,7 +23,7 @@
                         <%else%>
                             <%@tables.each do |t| %>
                                 <table class="table mb-5 pb-5">
-                                    <h2 id="#<%=t.title.capitalize%>"><%=t.title.capitalize%></h2>
+                                    <a class="nav-link text-dark"href="/planners/<%=t.id%>"><h2 id="<%=t.title.capitalize%>"><%=t.title.capitalize%></h2></a>
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col">#</th>
@@ -52,18 +51,20 @@
                         <%end%>
                     </div>
                     <div class="col-md-2 justify-content-center">
-                        <h4>Planners</h4>
-                        <%if @tables.empty?%>
-                            <p>None</p>
-                        <%else%>
-                            <ul class="nav flex-column">
-                                <li class="nav-item text-dark">
-                                    <%@tables.each do |t|%>
-                                        <a class="nav-link active" href="#<%=t.title.capitalize%>"><%=t.title.capitalize%></a>
-                                    <%end%>
-                                </li>
-                            </ul>
-                        <%end%>
+                        <nav class="navbar sticky-top navbar-light">
+                            <h4>Planners</h4>
+                            <%if @tables.empty?%>
+                                <p>None</p>
+                            <%else%>
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <%@tables.each do |t|%>
+                                            <a class="nav-link text-dark" href="#<%=t.title.capitalize%>"><%=t.title.capitalize%></a>
+                                        <%end%>
+                                    </li>
+                                </ul>
+                            <%end%>
+                        </nav>
                     </div>
                 </div>
             </div>
