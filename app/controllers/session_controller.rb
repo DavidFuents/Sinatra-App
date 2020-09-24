@@ -57,5 +57,9 @@ class SessionController < ApplicationController
     get '/logout' do
         logout
         redirect '/'
+    end
+
+    get '/:anything' do 
+        erb :'/users/404'
       end
 end

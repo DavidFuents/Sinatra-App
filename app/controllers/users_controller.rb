@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-    get '/users/error' do 
+    get '/error' do 
         erb :'/users/error'
-      end
+    end
+
+    get '/notfound' do 
+      erb :'/users/notfound' 
+    end 
 end
